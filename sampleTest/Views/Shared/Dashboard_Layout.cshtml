@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Content/dash.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body>
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp" style="margin-left: 5%;">
+            <a class="navbar-brand" href="#">SALE APP</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="@Url.Action("Profile","Admin")" class="nav-link">Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="@Url.Action("ReportHomePage","Reports")" class="nav-link">Report</a>
+            </li>
+        @*<li class="nav-list-item">
+          
+        </li>*@
+            <li class="nav-list-item">
+                <a href="@Url.Action("LogApprove","AdminFunction")" class="nav-link">Approval</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Works</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="@Url.Action("Logout","Admin")" class="nav-link">LogOut</a>
+                @*@Html.ActionLink("LogOut", "Logout", "Admin", new { @class = "nav-link" }, null)*@
+                @*@Html.ActionLink("LogOut", "Logout", "Admin")*@
+            </li>
+        </ul>
+
+    </nav>
+    <div class="container" style="margin-top: 20px;">
+        @RenderBody()
+        <hr />
+        @*<div class="row">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

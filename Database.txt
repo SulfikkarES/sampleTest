@@ -1,0 +1,82 @@
+
+CREATE DATABASE TLConnect;
+
+CREATE TABLE [dbo].[AdminLogin](
+	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Username] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[Role] [nvarchar](50) NULL,
+	[RecordStatus_NB] [int] NULL,
+	[CreatedDate_DT] [datetime] NULL,
+	[CreatedUser_NB] [int] NULL,
+	[ModifiedDate_DT] [datetime] NULL,
+	[ModifiedUser_NB] [int] NULL)
+
+
+INSERT INTO [dbo].[AdminLogin]
+           ([Username]
+           ,[Password]
+           ,[Role]
+           ,[RecordStatus_NB])
+     VALUES
+           ('admin',1234,'A',0),
+            ('sulfikkar',1234,'A',0),
+			 ('sulfikkarNew',1234,'A',0);
+
+
+CREATE TABLE [dbo].[MedicalLeadAgent](
+	[MedicalLeadAgentID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[MedicalLeadAgentName_VC] [nvarchar](100) NULL,
+	[MedicalLeadAgentMobilePhone_VC] [nvarchar](100) NULL,
+	[MedicalLeadAgentEmail_VC] [nvarchar](100) NULL,
+	[RecordStatus_NB] [int] NULL,
+	[MedicalLeadAgentLocation_VC] [nvarchar](1000) NULL,
+	[CreatedDate_DT] [datetime] NOT NULL,
+	[CreatedUser_NB] [int] NOT NULL,
+	[ModifiedDate_DT] [datetime] NULL,
+	[ModifiedUser_NB] [int] NULL,
+	[MedicalRepID] [int] NULL,
+	[MedicalLeadAgentRemarks_VC] [nvarchar](100) NULL,
+	[MedicalLeadAgentStatus_VC] [nvarchar](100) NULL,
+	[ImageTitle_VC] [nvarchar](1000) NULL,
+	[ImageTitle2_VC] [nvarchar](1000) NULL,
+	[Longitude] [nvarchar](50) NULL,
+	[Latitude] [nvarchar](50) NULL)
+
+
+
+CREATE TABLE [dbo].[StatusMaster](
+	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Status] [nvarchar](50) NULL,
+	[StatusType] [nvarchar](50) NULL,
+	[RecordStatus_NB] [int] NULL)
+
+
+
+INSERT INTO [dbo].[StatusMaster]
+           ([Status]
+           ,[StatusType]
+           ,[RecordStatus_NB])
+     VALUES
+           ('Open','ML',0),
+		    ('Processing','ML',0),
+			 ('Completed','ML',0);
+
+
+
+CREATE TABLE [dbo].[ErrorLog](
+	[LogID_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Log_UserID_NB] [int] NULL,
+	[Log_ModuleName_VC] [nvarchar](max) NULL,
+	[Log_ClassName_VC] [nvarchar](max) NULL,
+	[Log_ProcedureName_VC] [nvarchar](max) NULL,
+	[Log_ErrorCode_VC] [nvarchar](max) NULL,
+	[Log_Remarks_VC] [nvarchar](max) NULL,
+	[Log_LogDate_DT] [datetime] NULL,
+	[Log_Parameter_VC] [nvarchar](max) NULL)
+ 
+
+
+
+
+

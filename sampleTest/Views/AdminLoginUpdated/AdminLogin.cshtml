@@ -1,0 +1,71 @@
+﻿@model sampleTest.Models.AdminLogin
+@{ ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/AdmMaster_Layout.cshtml";
+    }
+
+
+
+<section>
+    <div class="login-outer">
+        <div class="left">
+            <img src="~/images/login.png" alt="">
+
+        </div>
+        <div class="right_outer">
+            <div class="right">
+                <div class="res_form_width">
+                    <div class="login_logo_outer">
+                        <img class="login-logo" src="" alt="">
+                    </div>
+                    <h3>Welcome</h3>
+
+                    <p class="login-note">Please sign-in to your account and get started</p>
+                    <div class="form-area">
+                        @using (Html.BeginForm())
+                        {
+            <form action="">
+                <div>
+                    @if (ViewBag.Message != null)
+                    {
+    <div id="popupdiv" style="color: red;">
+        @ViewBag.Message
+    </div>}
+                </div>
+                <div class="form-field">
+                    <label for="">Username</label>
+                    @*<input type="text" placeholder="Username" class="login-user">*@
+                    @Html.TextBox("Username", "", new { @class = "login-user", @placeholder = "Username", @onfocus = "DisableMsgPopUp()" })
+                </div>
+                <div class="form-field">
+                    <label for="">Password</label>
+                    @*<input type="password" placeholder="Password" class="login-user">*@
+                    @Html.Password("Password", "", new { @class = "login-user", @placeholder = "Password", @onfocus = "DisableMsgPopUp()" })
+                </div>
+                <div class="form-field-check">
+                    <input type="checkbox" id="" class="login-input">
+                    <label class="login-label" for="">Remember Me</label>
+                </div>
+                @*<button class="btn">
+                        LOGIN
+                    </button>*@
+                <input type="submit" class="btn" value="Submit" />
+
+            </form>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts
+{
+    <script type="text/javascript">
+        function DisableMsgPopUp() {
+            document.getElementById("popupdiv").style.display = "none";
+            /* $('#ApprExpID').val(id);*/
+            //alert("dds");
+        }
+    </script>
+
+}
+

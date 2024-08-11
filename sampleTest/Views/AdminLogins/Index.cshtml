@@ -1,0 +1,83 @@
+﻿@model IEnumerable<sampleTest.Models.AdminLogin>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordStatus_NB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate_DT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedUser_NB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate_DT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedUser_NB)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordStatus_NB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate_DT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUser_NB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate_DT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUser_NB)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

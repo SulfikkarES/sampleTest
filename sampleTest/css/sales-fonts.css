@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?1o1lma');
+  src:  url('../fonts/icomoon.eot?1o1lma#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.woff2?1o1lma') format('woff2'),
+    url('../fonts/icomoon.ttf?1o1lma') format('truetype'),
+    url('../fonts/icomoon.woff?1o1lma') format('woff'),
+    url('../fonts/icomoon.svg?1o1lma#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ak-"], [class*=" ak-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ak-doc-view:before {
+  content: "\e906";
+}
+.ak-show:before {
+  content: "\e905";
+}
+.ak-close:before {
+  content: "\e904";
+}
+.ak-menu:before {
+  content: "\e903";
+}
+.ak-edit:before {
+  content: "\e902";
+}
+.ak-add:before {
+  content: "\e900";
+}
+.ak-delete:before {
+  content: "\e901";
+}

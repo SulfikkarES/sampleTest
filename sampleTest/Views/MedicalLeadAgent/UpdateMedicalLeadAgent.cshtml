@@ -1,0 +1,185 @@
+﻿@model sampleTest.Models.MedicalLeadAgent
+@{
+    ViewBag.Title = "UpdateMedicalLeadAgent";
+    Layout = "~/Views/Shared/Common_Layout.cshtml";
+
+    <style>
+
+        h1 {
+            color: #88B04B;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            margin-bottom: 10px;
+            margin-left: 10%;
+        }
+
+        p {
+            color: #404F5E;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        i {
+            color: #9ABC66;
+            font-size: 100px;
+            line-height: 200px;
+            margin-left: 37px;
+        }
+
+        .card {
+            background: white;
+            padding: 45px;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #C8D0D8;
+            display: inline-block;
+            margin: 0 auto;
+            margin-left: 38%;
+        }
+    </style>
+    <style>
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            opacity: 1;
+            transition: opacity 0.6s;
+            margin-bottom: 15px;
+        }
+
+            .alert.success {
+                background-color: #04AA6D;
+            }
+
+            .alert.info {
+                background-color: #2196F3;
+            }
+
+            .alert.warning {
+                background-color: #ff9800;
+            }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hidden-label {
+            display: none;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+}
+
+<section>
+    <div class="add_task_outer">
+        <div class="add_task_head">
+            <div class="left">
+                Update Medical Lead Agent
+            </div>
+        </div>
+        <div class="task-content-field">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <form action="">
+
+                    @Html.HiddenFor(model => model.MedicalLeadAgentID)
+
+
+
+
+                    <div class=form-field>
+                        @Html.LabelFor(model => model.MedicalLeadAgentName_VC, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="form-field">
+                            @*@ <label for="LeadAgentName_VC">Lead Agent Name </label>*@
+
+                            @Html.EditorFor(model => model.MedicalLeadAgentName_VC, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.MedicalLeadAgentName_VC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class=form-field>
+
+                        @Html.LabelFor(model => model.MedicalLeadAgentMobilePhone_VC, "Mob No", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="form-field">
+                            @*<label for="salesid">Sales ID</label>*@
+                            @Html.EditorFor(model => model.MedicalLeadAgentMobilePhone_VC, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.MedicalLeadAgentMobilePhone_VC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class=form-field>
+                        @Html.LabelFor(model => model.MedicalLeadAgentEmail_VC, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="form-field">
+                            @*<label for="salesname">Sales Name</label>*@
+                            @Html.EditorFor(model => model.MedicalLeadAgentEmail_VC, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.MedicalLeadAgentEmail_VC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Status:")
+                        @Html.DropDownList("MedicalLeadAgentStatus_VC", new SelectList(ViewBag.StatusListlist, "Text", "Text"), "--Select Status--")
+                    </div>
+                    <div class=form-field>
+                        @Html.LabelFor(model => model.MedicalLeadAgentRemarks_VC, "Remarks", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="form-field">
+                            @*<label for="salesname">Sales Name</label>*@
+                            @Html.EditorFor(model => model.MedicalLeadAgentRemarks_VC, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.MedicalLeadAgentRemarks_VC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fname">Location</label>
+                        @Html.TextBoxFor(m => m.MedicalLeadAgentLocation_VC, Model.MedicalLeadAgentLocation_VC, new { @class = "", @id = "LeadAgentLocation_VC", @placeholder = "Location" })
+                    </div>
+
+                    <div class="submit-outer">
+                        <input type="submit" value="Update" class="btn" />
+
+                        <input type="button" value="Back to List" class="btn btn-danger" onclick="@(" window.location.href='" + @Url.Action("MedicalLeadAgentForm", "MedicalLeadAgent") + "' ");" />
+
+                    </div>
+                </form>
+            }
+            @if (TempData["StatusMess"].ToString() != null && TempData["StatusMess"].ToString() != string.Empty)
+            {
+
+                <div id="ad" class="alert info" style="margin-top:10px">
+                    <span class="closebtn">&times;</span>
+                    <strong> @TempData["StatusMess"].ToString()</strong>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        setTimeout(function () {
+            $("#ad").hide();
+        }, 15000);
+    </script>
+    <script src="~/js/common.js"></script>
+    <script src="~/js/main.js"></script>
+}

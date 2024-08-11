@@ -1,0 +1,368 @@
+﻿@model sampleTest.Models.MedicalLeadAgent
+@{
+    ViewBag.Title = "MedicalLeadAgentForm";
+    Layout = "~/Views/Shared/Common_Layout.cshtml";
+
+    int index = 1;
+    <style>
+
+        h1 {
+            color: #88B04B;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            margin-bottom: 10px;
+            margin-left: 10%;
+        }
+
+        p {
+            color: #404F5E;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        i {
+            color: #9ABC66;
+            font-size: 100px;
+            line-height: 200px;
+            margin-left: 37px;
+        }
+
+        .card {
+            background: white;
+            padding: 45px;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #C8D0D8;
+            display: inline-block;
+            margin: 0 auto;
+            margin-left: 38%;
+        }
+    </style>
+    <style>
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            opacity: 1;
+            transition: opacity 0.6s;
+            margin-bottom: 15px;
+        }
+
+            .alert.success {
+                background-color: #04AA6D;
+            }
+
+            .alert.info {
+                background-color: #2196F3;
+            }
+
+            .alert.warning {
+                background-color: #ff9800;
+            }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .text-danger {
+            color: red;
+            font: bold;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+
+        .item {
+            width: 115px;
+            cursor: pointer;
+            background-color: #6362E7;
+            color: #FFFFFF;
+            border-radius: 5px;
+            font-size: 15px;
+            height: 38px !important;
+            float: right;
+        }
+    </style>
+}
+
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="~/js/materialize.js"></script>
+<script type="text/javascript" src="~/js/main.js"></script>
+
+<section>
+    <div>
+        <table>
+        </table>
+    </div>
+    <div class="add_task_outer">
+        <div class="add_task_head">
+            <div class="left">
+                Medical Lead Agent
+            </div>
+        </div>
+        <div class="task-content-field1">
+            @using (Html.BeginForm())
+            {
+                @*@Html.AntiForgeryToken()*@
+
+                <div class="task-content-outer">
+                    @using (Html.BeginForm("MedicalLeadAgentForm", "MedicalLeadAgent", FormMethod.Post))
+                    {
+                        <form action="">
+                            <div class="form-field">
+                                <label for="fname">From Date</label>
+                                @Html.TextBox("FromDate", "", new { @class = "datepicker", @id = "FromDate", @placeholder = "CreatedDate_DT", @type = "date" })
+                            </div>
+                            <div class="form-field">
+                                <label for="fname">To Date</label>
+                                @Html.TextBox("ToDate", "", new { @class = "datepicker", @id = "ToDate", @placeholder = "VisitDate", @type = "date" })
+                            </div>
+
+                            <div class="form-group">
+
+                                @Html.Label("Status:")
+                                @Html.DropDownList("MedicalLeadAgentStatus_VC", new SelectList(ViewBag.StatusListlist, "Text", "Text"), "--Select Status--", new { @id = "statusid", })
+                            </div>
+
+
+
+
+
+                            <div class="form-field">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class=submit-outer>
+
+                                        <input type="submit" value="Search" class="btn btn-default" />
+                                        <input type="submit" class="btn btn-default" value="Clear" id="chkProcess" onclick="clearForm()" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    }
+
+
+
+
+
+                </div>
+                <div>
+
+                    @if (TempData["StatusMess"].ToString() != null && TempData["StatusMess"].ToString() != string.Empty)
+                    {
+
+                        <div id="ad" class="alert info" style="margin-top:10px">
+                            <span class="closebtn">&times;</span>
+                            <strong> @TempData["StatusMess"].ToString()</strong>
+                        </div>
+                    }
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="approval_outer">
+        <div class="profile_head">
+            <div class="left">
+                <h2> List of Medical Lead Agent</h2>
+            </div>
+        </div>
+
+        <div class="table-outer">
+            <table>
+                <thead>
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Medical Lead Agent Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                        <th>Location</th>
+                        <th class="action"></th>
+                        <th class="action">Action</th>
+                        <
+                        <th></th>
+                        <
+                        <th></th>
+                        <
+                        <th></th>
+
+
+
+                    </tr>
+                </thead>
+                @if (Model.MedicalLeadAgentList != null)
+                {
+                    foreach (var item in Model.MedicalLeadAgentList.OrderByDescending(x => x.MedicalLeadAgentID))
+                    {
+                        <tr>
+                            <td> @index</td>
+
+
+                            <td>@item.MedicalLeadAgentName_VC</td>
+                            <td>@item.MedicalLeadAgentMobilePhone_VC</td>
+                            <td>@item.MedicalLeadAgentEmail_VC</td>
+                            <td>@item.MedicalLeadAgentStatus_VC</td>
+                            <td>@item.MedicalLeadAgentRemarks_VC</td>
+                            <td>@item.MedicalLeadAgentLocation_VC</td>
+
+
+                            <td class="action">
+                                <a href="@Url.Action("UpdateMedicalLeadAgent","MedicalLeadAgent", new { id = item.MedicalLeadAgentID })">
+                                    <span>Edit</span>
+                            </td>
+
+
+
+
+
+                            <td class="delete">
+                                <a href="@Url.Action("DeleteLeadeAgentAdminDashBoard","MedicalLeadAgent", new { id = item.MedicalLeadAgentID })" onclick="return confirm('Are you sure to delete this Lead Agent?');">
+                                    <span>Delete</span>
+                                </a>
+                            </td>
+
+
+
+
+                            <td>
+                                <button onclick="DisplayImage('@item.ImageTitle_VC')">   <span>View Image 1</span></button>
+
+
+                            </td>
+                            <td>
+                                <button onclick="DisplayImage('@item.ImageTitle2_VC')">   <span>View Image 2</span></button>
+
+
+                            </td>
+                            <td>
+                                @{
+                                    if (item.ImageTitle_VC.Contains("ErrorDataFound.png"))
+                                    { <a class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> No Attachments</a>
+                                    }
+                                    else
+                                    { <a class='btn btn-info btn-xs' href="@Url.Action("GetMedicalLeadAgentFileDownload","MedicalLeadAgent", new { id = item.MedicalLeadAgentID })"><span class="glyphicon glyphicon-edit"></span> Download</a>
+                                    }
+
+                                }
+
+                            </td>
+                        </tr>
+
+                        index++;
+                    }
+
+                }
+            </table>
+        </div>
+
+        <div class="text-center" style=" display: flex; justify-content: center; align-items: center;">
+            <input type="submit" class="item" value="Export" id="btnExport" onclick="location.href='@Url.Action("GetLeadAgentReportList", "MedicalLeadAgent")'" />
+        </div>
+
+    </div>
+
+
+
+
+</section>
+
+<div id="myImgModal" class="modal" style="padding-top: 75px; width: 100%; height: 100%;">
+    <span class="close" data-dismiss="modal" style="position: absolute; top: 6%; right: 8%; color: red; font-size: 40px; font-weight: bold; opacity: 1; ">&times;</span>
+
+    <img class="modal-content" id="img01" style="margin: auto; display: block; width: 80%; max-width: 700px;">
+    <div id="caption"></div>
+</div>
+@section Scripts {
+
+    <script>
+        function clearForm() {
+
+            document.getElementById("FromDate").value = "";
+            document.getElementById("ToDate").value = "";
+            document.getElementById("form-control").value = "";
+
+
+
+
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#chkProcess').click(function () {
+                $('#statusid').val(''); // Reset dropdown value to empty
+            });
+        });
+    </script>
+
+    <script>
+
+        $(function () {
+
+            $("#chkProcess").click(function (event) {
+
+                $('#form-control').prop('selectedIndex', 0);
+
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        setTimeout(function () {
+            $("#ad").hide();
+        }, 5000);
+    </script>
+
+    <script type="text/javascript">
+        function DisplayImage(path) {
+            /*    alert(path)*/
+            $("#myImgModal").modal({ backdrop: "static" });
+            var modalImg = document.getElementById("img01");
+
+            modalImg.src = path;
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+        }
+
+    </script>
+    <script type="text/javascript">
+        function redirect(url) {
+            /* var url = "http://www.(url).com";*/
+            /*window.location(url);*/
+            Window.location.href = url;
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ad').delay(3500).fadeOut('slow');
+
+        });
+    </script>
+
+
+}

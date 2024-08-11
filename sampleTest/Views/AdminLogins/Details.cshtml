@@ -1,0 +1,90 @@
+﻿@model sampleTest.Models.AdminLogin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>AdminLogin</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RecordStatus_NB)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RecordStatus_NB)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate_DT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate_DT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedUser_NB)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedUser_NB)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedDate_DT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedDate_DT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedUser_NB)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedUser_NB)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
